@@ -24,6 +24,8 @@
         </select>
         <br>To add a new entry, click:
         <input type="button" value="Add" onclick="javascript:window.location='http://localhost:8080/orders/add'"/>
+        <br>To add a new relation with Videogame, click:
+        <input type="button" value="Add" onclick="javascript:window.location='http://localhost:8080/set_vg_or'"/>
         <br><br><table style="border: 1px solid; width: 700px; text-align:center">
         <thead style="background:#C6EFCE">
         <tr>
@@ -40,7 +42,8 @@
                 <td>${order.getClient().getName()}</td>
                 <td>${order.getDate()}</td>
                 <td><a class = "two" href="${pageContext.servletContext.contextPath}/orders/delete?id=${order.orderId}">Delete</a>
-                    <a class = "two" href="${pageContext.servletContext.contextPath}/orders/edit?id=${order.orderId}">Edit</a></td>
+                    <a class = "two" href="${pageContext.servletContext.contextPath}/orders/edit?id=${order.orderId}">Edit</a>
+                    <a class = "two" href="${pageContext.servletContext.contextPath}/orders/videogames?id=${order.orderId}">Videogames</a></td>
             </tr>
         </c:forEach>
         </table>

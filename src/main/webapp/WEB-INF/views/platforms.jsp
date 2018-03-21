@@ -24,6 +24,8 @@
         </select>
         <br>To add a new entry, click:
         <input type="button" value="Add" onclick="javascript:window.location='http://localhost:8080/platforms/add'"/>
+        <br>To add a new relation with Videogame, click:
+        <input type="button" value="Add" onclick="javascript:window.location='http://localhost:8080/set_vg_pl'"/>
         <br><br><table style="border: 1px solid; width: 700px; text-align:center">
         <thead style="background:#C6EFCE">
         <tr>
@@ -40,7 +42,8 @@
                 <td>${platform.getPlatformcol()}</td>
                 <td>${platform.getPlatform()}</td>
                 <td><a class = "two" href="${pageContext.servletContext.contextPath}/platforms/delete?id=${platform.platformId}">Delete</a>
-                    <a class = "two" href="${pageContext.servletContext.contextPath}/platforms/edit?id=${platform.platformId}">Edit</a></td>
+                    <a class = "two" href="${pageContext.servletContext.contextPath}/platforms/edit?id=${platform.platformId}">Edit</a>
+                    <a class = "two" href="${pageContext.servletContext.contextPath}/platforms/videogames?id=${platform.platformId}">Videogames</a></td></td>
             </tr>
         </c:forEach>
         </table>

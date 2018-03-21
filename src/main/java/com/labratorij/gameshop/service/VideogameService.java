@@ -10,4 +10,5 @@ public interface VideogameService {
     void delete(int id);
     VideogameEntity get(int id);
     List<VideogameEntity> getAll();
+    void save(VideogameEntity videogame);
 }

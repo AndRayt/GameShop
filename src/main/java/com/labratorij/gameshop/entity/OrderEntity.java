@@ -1,7 +1,6 @@
 package com.labratorij.gameshop.entity;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -87,5 +86,10 @@ public class OrderEntity implements Serializable {
 
     public void setVideogames(Collection<VideogameEntity> videogames) {
         this.videogames = videogames;
+    }
+
+    public void addVideogame(VideogameEntity videogame){
+        videogames.add(videogame);
+        videogame.getOrders().add(this);
     }
 }

@@ -10,4 +10,5 @@ public interface PlatformService {
     void delete(int id);
     PlatformEntity get(int id);
     List<PlatformEntity> getAll();
+    void addVideogameList(int id_game, int id_platform);
 }

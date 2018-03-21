@@ -16,6 +16,10 @@
             <td><form:input path="videogame"/></td>
         </tr>
         <tr>
+            <td><form:label path="publisher">Publisher: </form:label></td>
+            <td><form:input path="publisher"/></td>
+        </tr>
+        <tr>
             <td><form:label path="developer">Developer: </form:label></td>
             <td><form:input path="developer"/></td>
         </tr>
@@ -29,7 +33,7 @@
         </tr>
         <tr>
             <td><form:label path="date">Date: </form:label></td>
-            <td><form:input path="date"/></td>
+            <td><form:input path="date" type="date"/></td>
         </tr>
         <tr>
             <td><form:label path="costOfPurchase">Cost of purchase: </form:label></td>

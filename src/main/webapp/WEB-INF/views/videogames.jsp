@@ -50,7 +50,7 @@
             <td>${videogame.getPrice()}</td>
             <td>${videogame.getQuantity()}</td>
             <td><a class = "two" href="${pageContext.servletContext.contextPath}/videogames/delete?id=${videogame.videogameId}">Delete</a>
-                <a class = "two" href="${pageContext.servletContext.contextPath}/videogames/edit?id=${videogame.videogameId}">Edit</a></td>
+                <a class = "two" href="${pageContext.servletContext.contextPath}/videogames/edit?id=${videogame.videogameId}">Edit</a>
         </tr>
         </c:forEach>
         </table>

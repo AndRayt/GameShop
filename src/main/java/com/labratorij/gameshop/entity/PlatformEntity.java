@@ -4,7 +4,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "platforms", schema = "gameshop_new", catalog = "")
@@ -14,7 +16,11 @@ public class PlatformEntity implements Serializable {
     private int relevance;
     private String platformcol;
     private String platform;
-    private Collection<VideogameEntity> videogames;
+    private List<VideogameEntity> videogames;
+
+    public PlatformEntity() {
+        videogames = new ArrayList<VideogameEntity>();
+    }
 
     @Id
     @GenericGenerator(name="inc", strategy = "increment")
@@ -96,11 +102,16 @@ public class PlatformEntity implements Serializable {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "platform_has_videogame", joinColumns = @JoinColumn(name = "Platform_Platform_ID", referencedColumnName = "Platform_ID"), inverseJoinColumns = @JoinColumn(name = "Videogame_Videogame_ID", referencedColumnName = "Videogame_ID"))
-    public Collection<VideogameEntity> getVideogames() {
+    public List<VideogameEntity> getVideogames() {
         return videogames;
     }
 
-    public void setVideogames(Collection<VideogameEntity> platforms) {
+    public void setVideogames(List<VideogameEntity> platforms) {
         this.videogames = platforms;
+    }
+
+    public void addVideogame(VideogameEntity videogame){
+        videogames.add(videogame);
+        videogame.getPlatfrom().add(this);
     }
 }

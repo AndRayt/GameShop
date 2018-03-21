@@ -1,6 +1,7 @@
 package com.labratorij.gameshop.service.Impl;
 
 import com.labratorij.gameshop.entity.VideogameEntity;
+import com.labratorij.gameshop.repository.PlatformRepository;
 import com.labratorij.gameshop.repository.VideogameRepository;
 import com.labratorij.gameshop.service.VideogameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import java.util.List;
 public class VideogameServiceImpl implements VideogameService {
     @Autowired
     private VideogameRepository videogameRepository;
+
+    @Autowired
+    private PlatformRepository platformRepository;
 
     public void add(VideogameEntity client) {
         videogameRepository.saveAndFlush(client);
@@ -28,8 +32,10 @@ public class VideogameServiceImpl implements VideogameService {
         videogame.setPrice(videogame_temp.getPrice());
         videogame.setQuantity(videogame_temp.getQuantity());
         videogame.setVideogame(videogame_temp.getVideogame());
-        videogame.setOrders(videogame_temp.getOrders());
-        videogame.setPlatfrom(videogame_temp.getPlatfrom());
+        videogameRepository.save(videogame);
+    }
+
+    public void save(VideogameEntity videogame) {
         videogameRepository.save(videogame);
     }
 

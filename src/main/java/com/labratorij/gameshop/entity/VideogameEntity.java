@@ -5,7 +5,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "videogames", schema = "gameshop_new", catalog = "")
@@ -20,8 +22,13 @@ public class VideogameEntity implements Serializable {
     private double price;
     private int quantity;
     private String videogame;
-    private Collection<OrderEntity> orders;
-    private Collection<PlatformEntity> platfrom;
+    private List<OrderEntity> orders;
+    private List<PlatformEntity> platfrom;
+
+    public VideogameEntity() {
+        orders = new ArrayList<OrderEntity>();
+        platfrom = new ArrayList<PlatformEntity>();
+    }
 
     @Id
     @GenericGenerator(name="inc", strategy = "increment")
@@ -156,20 +163,20 @@ public class VideogameEntity implements Serializable {
     }
 
     @ManyToMany(mappedBy = "videogames")
-    public Collection<OrderEntity> getOrders() {
+    public List<OrderEntity> getOrders() {
         return orders;
     }
 
-    public void setOrders(Collection<OrderEntity> orders) {
+    public void setOrders(List<OrderEntity> orders) {
         this.orders = orders;
     }
 
     @ManyToMany(mappedBy = "videogames")
-    public Collection<PlatformEntity> getPlatfrom() {
+    public List<PlatformEntity> getPlatfrom() {
         return platfrom;
     }
 
-    public void setPlatfrom(Collection<PlatformEntity> platfrom) {
+    public void setPlatfrom(List<PlatformEntity> platfrom) {
         this.platfrom = platfrom;
     }
 }

@@ -4,10 +4,13 @@ import com.labratorij.gameshop.entity.*;
 import com.labratorij.gameshop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/")
@@ -120,6 +123,8 @@ public class MainController {
 
     @RequestMapping(value = "/videogames/add", method = RequestMethod.GET)
     public String getAddVideogame(ModelMap model) {
+        //VideogameEntity videogameEntity = new VideogameEntity();
+        //videogameEntity.setPlatfrom(new ArrayList<PlatformEntity>());
         model.addAttribute("videogameAttribute", new VideogameEntity());
         return "videogameAddPage";
     }
@@ -190,16 +195,33 @@ public class MainController {
     }
 
     @RequestMapping(value = "/orders/edit", method = RequestMethod.GET)
-    public String getEditOrder(@RequestParam(value="id") Integer id, ModelMap model) {
+    public String getEditOrder(@RequestParam(value="id") int id, ModelMap model) {
+        model.addAttribute("orderId", id);
+        return "orderEditPage";
+    }
+
+    @RequestMapping(value = "/orders/edit", method = RequestMethod.POST)
+    public String postEditOrder(@ModelAttribute("orderId") int id, @RequestParam(value="date") Date date, ModelMap model) {
+        orderService.changeDate(id, date);
+        return "redirect:/orders";
+    }
+
+    /*@RequestMapping(value = "/orders/edit", method = RequestMethod.GET)
+    public String getEditOrder(ModelMap model, @RequestParam(value="id") Integer id) {
+        model.addAttribute("clients", clientService.getAll());
+        model.addAttribute("employees", employeeService.getAll());
         model.addAttribute("orderAttribute", orderService.get(id));
         return "orderEditPage";
     }
 
     @RequestMapping(value = "/orders/edit", method = RequestMethod.POST)
-    public String postEditOrder(@ModelAttribute("orderAttribute") OrderEntity order, @RequestParam(value="id") Integer id, ModelMap model) {
-        orderService.edit(order, id);
+    public String postEditOrder(@ModelAttribute("orderAttribute") OrderEntity order, @RequestParam("date") Date date, @RequestParam("clId") Integer clId, @RequestParam("empId") Integer empId) {
+        order.setDate(date);
+        order.setEmployee(employeeService.get(empId));
+        order.setClient(clientService.get(clId));
+        orderService.save(order);
         return "redirect:/orders";
-    }
+    }*/
 
     @RequestMapping(value = "/platforms/edit", method = RequestMethod.GET)
     public String getEditPlatform(@RequestParam(value="id") Integer id, ModelMap model) {
@@ -228,10 +250,52 @@ public class MainController {
     /**
      * Дополнительные REST запросы
      */
+    //получить лист заказов для данного клиента
     @RequestMapping(value = "/get_list_orders", method = RequestMethod.GET)
     public String orders(ModelMap model, @RequestParam(value="id") Integer id) {
         model.addAttribute("orders", clientService.get(id).getOrdersByClientId());
         return "orders";
     }
 
+    //сделать связь videogames-platforms
+    @RequestMapping(value = "/set_vg_pl", method = RequestMethod.GET)
+    public String vdPlGet(ModelMap model) {
+        model.addAttribute("videogames", videogameService.getAll());
+        model.addAttribute("platforms", platformService.getAll());
+        return "vgPl";
+    }
+
+    @RequestMapping(value = "/set_vg_pl", method = RequestMethod.POST)
+    public String vdPlPost(@RequestParam(value="plId") Integer plId, @RequestParam(value="vgId") Integer vgId) {
+        platformService.addVideogameList(vgId, plId);
+        return "redirect:/platforms";
+    }
+
+    //сделать связь videogames-orders
+    @RequestMapping(value = "/set_vg_or", method = RequestMethod.GET)
+    public String vdOrGet(ModelMap model) {
+        model.addAttribute("videogames", videogameService.getAll());
+        model.addAttribute("orders", orderService.getAll());
+        return "vgOr";
+    }
+
+    @RequestMapping(value = "/set_vg_or", method = RequestMethod.POST)
+    public String vdOrPost(@RequestParam(value="orId") Integer orId, @RequestParam(value="vgId") Integer vgId) {
+        orderService.addVideogameList(vgId, orId);
+        return "redirect:/orders";
+    }
+
+    //просмотр видеоигр в заказе
+    @RequestMapping(value = "/orders/videogames", method = RequestMethod.GET)
+    public String ordersVideogames(@RequestParam(value="id") Integer id, ModelMap model) {
+        model.addAttribute("videogames", orderService.get(id).getVideogames());
+        return "videogames";
+    }
+
+    //просмотр видеоигр для данной платформы
+    @RequestMapping(value = "/platforms/videogames", method = RequestMethod.GET)
+    public String platformsVideogames(@RequestParam(value="id") Integer id, ModelMap model) {
+        model.addAttribute("videogames", platformService.get(id).getVideogames());
+        return "videogames";
+    }
 }
