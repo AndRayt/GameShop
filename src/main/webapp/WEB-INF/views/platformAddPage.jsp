@@ -13,6 +13,10 @@
 <form:form modelAttribute="platformAttribute" method="POST" action="${saveUrl}">
     <table>
         <tr>
+            <td><form:label path="platform">Platform: </form:label></td>
+            <td><form:input path="platform"/></td>
+        </tr>
+        <tr>
             <td><form:label path="producer">Producer: </form:label></td>
             <td><form:input path="producer"/></td>
         </tr>
@@ -23,10 +27,6 @@
         <tr>
             <td><form:label path="platformcol">Platformcol: </form:label></td>
             <td><form:input path="platformcol"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="platform">Platform: </form:label></td>
-            <td><form:input path="platform"/></td>
         </tr>
     </table>
     <input type="submit" value="Save" />

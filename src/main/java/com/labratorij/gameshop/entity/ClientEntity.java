@@ -81,7 +81,7 @@ public class ClientEntity implements Serializable {
         return result;
     }
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "client")
     public Collection<OrderEntity> getOrdersByClientId() {
         return ordersByClientId;
     }

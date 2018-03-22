@@ -94,7 +94,7 @@ public class EmployeeEntity implements Serializable {
         return result;
     }
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "employee")
     public Collection<OrderEntity> getOrdersByEmployeeId() {
         return ordersByEmployeeId;
     }
