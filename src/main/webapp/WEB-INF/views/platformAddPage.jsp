@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>GameShop | Добавление платформы</title>
+    <link rel="stylesheet" href="../resources/style.css">
 </head>
 <body>
 

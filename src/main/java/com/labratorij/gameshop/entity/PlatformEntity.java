@@ -100,7 +100,7 @@ public class PlatformEntity implements Serializable {
         return result;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "platform_has_videogame", joinColumns = @JoinColumn(name = "Platform_Platform_ID", referencedColumnName = "Platform_ID"), inverseJoinColumns = @JoinColumn(name = "Videogame_Videogame_ID", referencedColumnName = "Videogame_ID"))
     public List<VideogameEntity> getVideogames() {
         return videogames;

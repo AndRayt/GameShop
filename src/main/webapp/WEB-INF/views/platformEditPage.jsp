@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Game Shop | Изменение записи о платформе</title>
+    <link rel="stylesheet" href="../resources/style.css">
 </head>
 <body>
 

@@ -31,6 +31,8 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     public void delete(int id) {
+        platformRepository.getOne(id).getVideogames().clear();
+
         platformRepository.delete(id);
     }
 

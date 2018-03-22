@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>GameShop | Добавление заказа</title>
+    <link rel="stylesheet" href="../resources/style.css">
 </head>
 <body>
 
@@ -18,7 +19,7 @@
 
         <tr>
             <td><label for="empId">Employee ID: </label></td>
-            <td><select multiple name="empId">
+            <td><select name="empId">
                 <c:forEach items="${employees}" var="employee">
                     <option value=${employee.getEmployeeId()}>${employee.getName()} : ${employee.getEmployeeId()}</option>
                 </c:forEach>
@@ -27,7 +28,7 @@
 
         <tr>
             <td><label for="clId">Client ID: </label></td>
-            <td><select multiple name="clId">
+            <td><select name="clId">
                 <c:forEach items="${clients}" var="client">
                     <option value=${client.getClientId()}>${client.getName()} : ${client.getClientId()}</option>
                 </c:forEach>

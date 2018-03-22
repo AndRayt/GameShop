@@ -1,16 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Андрей
-  Date: 13.03.2018
-  Time: 19:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>GameShop | Добавление связи Заказ - Видеоигра</title>
+    <link rel="stylesheet" href="../resources/style.css">
 </head>
 <body>
 

@@ -78,7 +78,7 @@ public class OrderEntity implements Serializable {
         this.client = clientByClientId;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "order_has_videogame", joinColumns = @JoinColumn(name = "Order_Order_ID", referencedColumnName = "Order_ID"), inverseJoinColumns = @JoinColumn(name = "Videogame_Videogame_ID", referencedColumnName = "Videogame_ID"))
     public Collection<VideogameEntity> getVideogames() {
         return videogames;

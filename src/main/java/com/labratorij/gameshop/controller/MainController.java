@@ -4,13 +4,10 @@ import com.labratorij.gameshop.entity.*;
 import com.labratorij.gameshop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/")
@@ -123,8 +120,6 @@ public class MainController {
 
     @RequestMapping(value = "/videogames/add", method = RequestMethod.GET)
     public String getAddVideogame(ModelMap model) {
-        //VideogameEntity videogameEntity = new VideogameEntity();
-        //videogameEntity.setPlatfrom(new ArrayList<PlatformEntity>());
         model.addAttribute("videogameAttribute", new VideogameEntity());
         return "videogameAddPage";
     }

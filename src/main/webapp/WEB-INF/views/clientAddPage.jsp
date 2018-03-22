@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>GameShop | Добавление пользователя</title>
+    <link rel="stylesheet" href="../resources/style.css">
 </head>
 <body>
 

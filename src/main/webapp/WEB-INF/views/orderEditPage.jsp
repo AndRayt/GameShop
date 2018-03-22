@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>GameShop | Изменение даты заказа</title>
+    <link rel="stylesheet" href="../resources/style.css">
 </head>
 <body>
 
