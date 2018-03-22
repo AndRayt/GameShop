@@ -2,6 +2,7 @@ package com.labratorij.gameshop.service.Impl;
 
 import com.labratorij.gameshop.entity.OrderEntity;
 import com.labratorij.gameshop.entity.PlatformEntity;
+import com.labratorij.gameshop.entity.VideogameEntity;
 import com.labratorij.gameshop.repository.OrderRepository;
 import com.labratorij.gameshop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.labratorij.gameshop.repository.VideogameRepository;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -49,13 +52,9 @@ public class OrderServiceImpl implements OrderService {
 
     public void addVideogameList(int id_game, int id_platform) {
         OrderEntity pt = orderRepository.findOne(id_platform);
-        pt.addVideogame(videogameRepository.findOne(id_game));
+        HashSet rl = new HashSet(pt.getVideogames());
+        rl.add(videogameRepository.findOne(id_game));
+        pt.setVideogames(new ArrayList<VideogameEntity>(rl));
         orderRepository.save(pt);
-    }
-
-    public void changeDate(int id, Date date) {
-        OrderEntity order = orderRepository.findOne(id);
-        order.setDate(date);
-        orderRepository.save(order);
     }
 }

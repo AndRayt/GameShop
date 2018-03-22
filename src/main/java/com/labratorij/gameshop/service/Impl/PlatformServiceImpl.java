@@ -1,12 +1,15 @@
 package com.labratorij.gameshop.service.Impl;
 
 import com.labratorij.gameshop.entity.PlatformEntity;
+import com.labratorij.gameshop.entity.VideogameEntity;
 import com.labratorij.gameshop.repository.PlatformRepository;
 import com.labratorij.gameshop.repository.VideogameRepository;
 import com.labratorij.gameshop.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -46,7 +49,9 @@ public class PlatformServiceImpl implements PlatformService {
 
     public void addVideogameList(int id_game, int id_platform) {
         PlatformEntity pt = platformRepository.findOne(id_platform);
-        pt.addVideogame(videogameRepository.findOne(id_game));
+        HashSet rl = new HashSet(pt.getVideogames());
+        rl.add(videogameRepository.findOne(id_game));
+        pt.setVideogames(new ArrayList<VideogameEntity>(rl));
         platformRepository.save(pt);
     }
 }

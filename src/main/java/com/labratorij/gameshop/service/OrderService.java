@@ -13,5 +13,4 @@ public interface OrderService {
     List<OrderEntity> getAll();
     void save(OrderEntity order);
     void addVideogameList(int id_game, int id_order);
-    void changeDate(int id, Date date);
 }

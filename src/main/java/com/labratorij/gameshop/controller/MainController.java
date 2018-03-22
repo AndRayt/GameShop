@@ -189,35 +189,6 @@ public class MainController {
         return "redirect:/employees";
     }
 
-    @RequestMapping(value = "/orders/edit", method = RequestMethod.GET)
-    public String getEditOrder(@RequestParam(value="id") int id, ModelMap model) {
-        model.addAttribute("orderId", id);
-        return "orderEditPage";
-    }
-
-    @RequestMapping(value = "/orders/edit", method = RequestMethod.POST)
-    public String postEditOrder(@ModelAttribute("orderId") int id, @RequestParam(value="date") Date date, ModelMap model) {
-        orderService.changeDate(id, date);
-        return "redirect:/orders";
-    }
-
-    /*@RequestMapping(value = "/orders/edit", method = RequestMethod.GET)
-    public String getEditOrder(ModelMap model, @RequestParam(value="id") Integer id) {
-        model.addAttribute("clients", clientService.getAll());
-        model.addAttribute("employees", employeeService.getAll());
-        model.addAttribute("orderAttribute", orderService.get(id));
-        return "orderEditPage";
-    }
-
-    @RequestMapping(value = "/orders/edit", method = RequestMethod.POST)
-    public String postEditOrder(@ModelAttribute("orderAttribute") OrderEntity order, @RequestParam("date") Date date, @RequestParam("clId") Integer clId, @RequestParam("empId") Integer empId) {
-        order.setDate(date);
-        order.setEmployee(employeeService.get(empId));
-        order.setClient(clientService.get(clId));
-        orderService.save(order);
-        return "redirect:/orders";
-    }*/
-
     @RequestMapping(value = "/platforms/edit", method = RequestMethod.GET)
     public String getEditPlatform(@RequestParam(value="id") Integer id, ModelMap model) {
         model.addAttribute("platformAttribute", platformService.get(id));

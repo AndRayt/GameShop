@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "orders", schema = "gameshop_new", catalog = "")
@@ -14,7 +14,7 @@ public class OrderEntity implements Serializable {
     private Date date;
     private EmployeeEntity employee;
     private ClientEntity client;
-    private Collection<VideogameEntity> videogames;
+    private List<VideogameEntity> videogames;
 
     @Id
     @GenericGenerator(name="inc", strategy = "increment")
@@ -80,16 +80,11 @@ public class OrderEntity implements Serializable {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "order_has_videogame", joinColumns = @JoinColumn(name = "Order_Order_ID", referencedColumnName = "Order_ID"), inverseJoinColumns = @JoinColumn(name = "Videogame_Videogame_ID", referencedColumnName = "Videogame_ID"))
-    public Collection<VideogameEntity> getVideogames() {
+    public List<VideogameEntity> getVideogames() {
         return videogames;
     }
 
-    public void setVideogames(Collection<VideogameEntity> videogames) {
+    public void setVideogames(List<VideogameEntity> videogames) {
         this.videogames = videogames;
-    }
-
-    public void addVideogame(VideogameEntity videogame){
-        videogames.add(videogame);
-        videogame.getOrders().add(this);
     }
 }

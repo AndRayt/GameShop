@@ -5,7 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -108,10 +107,5 @@ public class PlatformEntity implements Serializable {
 
     public void setVideogames(List<VideogameEntity> platforms) {
         this.videogames = platforms;
-    }
-
-    public void addVideogame(VideogameEntity videogame){
-        videogames.add(videogame);
-        videogame.getPlatfrom().add(this);
     }
 }
