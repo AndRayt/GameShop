@@ -32,7 +32,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     public ClientEntity get(int id) {
-        return clientRepository.getOne(id);
+        return clientRepository.findOne(id);
     }
 
     public List<ClientEntity> getAll() {

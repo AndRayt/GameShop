@@ -8,11 +8,11 @@
 <p class="text1"> Select the table you want to work with:
 <select name="Навигация" onchange="top.location.href=this.options[this.selectedIndex].value;">
     <option selected value=""></option>
-    <option value="http://localhost:8080/clients">Clients</option>
-    <option value="http://localhost:8080/employees">Employees</option>
-    <option value="http://localhost:8080/orders">Orders</option>
-    <option value="http://localhost:8080/platforms">Platforms</option>
-    <option value="http://localhost:8080/videogames">Videogames</option>
+    <option value="${pageContext.servletContext.contextPath}/clients">Clients</option>
+    <option value="${pageContext.servletContext.contextPath}/employees">Employees</option>
+    <option value="${pageContext.servletContext.contextPath}/orders">Orders</option>
+    <option value="${pageContext.servletContext.contextPath}/platforms">Platforms</option>
+    <option value="${pageContext.servletContext.contextPath}/videogames">Videogames</option>
 </select></p>
 </body>
 </html>

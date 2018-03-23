@@ -44,7 +44,7 @@ public class VideogameServiceImpl implements VideogameService {
     }
 
     public VideogameEntity get(int id) {
-        return videogameRepository.getOne(id);
+        return videogameRepository.findOne(id);
     }
 
     public List<VideogameEntity> getAll() {

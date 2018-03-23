@@ -167,49 +167,85 @@ public class MainController {
      */
     @RequestMapping(value = "/clients/edit", method = RequestMethod.GET)
     public String getEditClient(@RequestParam(value="id") Integer id, ModelMap model) {
-        model.addAttribute("clientAttribute", clientService.get(id));
-        return "clientEditPage";
+        ClientEntity client = clientService.get(id);
+        if (client != null) {
+            model.addAttribute("clientAttribute", client);
+            return "clientEditPage";
+        } else {
+            return "redirect:/404";
+        }
     }
 
     @RequestMapping(value = "/clients/edit", method = RequestMethod.POST)
     public String postEditClient(@ModelAttribute("clientAttribute") ClientEntity client, @RequestParam(value="id") Integer id, ModelMap model) {
-        clientService.edit(client, id);
+        try {
+            clientService.edit(client, id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/clients";
     }
 
     @RequestMapping(value = "/employees/edit", method = RequestMethod.GET)
     public String getEditEmployee(@RequestParam(value="id") Integer id, ModelMap model) {
-        model.addAttribute("employeeAttribute", employeeService.get(id));
+        EmployeeEntity employee = employeeService.get(id);
+        if (employee != null) {
+            model.addAttribute("employeeAttribute", employee);
+        } else {
+            return "redirect:/404";
+        }
         return "employeeEditPage";
     }
 
     @RequestMapping(value = "/employees/edit", method = RequestMethod.POST)
     public String postEditEmpmployee(@ModelAttribute("employeeAttribute") EmployeeEntity employee, @RequestParam(value="id") Integer id, ModelMap model) {
-        employeeService.edit(employee, id);
+        try {
+            employeeService.edit(employee, id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/employees";
     }
 
     @RequestMapping(value = "/platforms/edit", method = RequestMethod.GET)
     public String getEditPlatform(@RequestParam(value="id") Integer id, ModelMap model) {
-        model.addAttribute("platformAttribute", platformService.get(id));
+        PlatformEntity platform = platformService.get(id);
+        if (platform != null) {
+            model.addAttribute("platformAttribute", platform);
+        } else {
+            return "redirect:/404";
+        }
         return "platformEditPage";
     }
 
     @RequestMapping(value = "/platforms/edit", method = RequestMethod.POST)
     public String postEditPlatform(@ModelAttribute("platformAttribute") PlatformEntity platform, @RequestParam(value="id") Integer id, ModelMap model) {
-        platformService.edit(platform, id);
+        try {
+            platformService.edit(platform, id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/platforms";
     }
 
     @RequestMapping(value = "/videogames/edit", method = RequestMethod.GET)
     public String getEditVideogame(@RequestParam(value="id") Integer id, ModelMap model) {
-        model.addAttribute("videogameAttribute", videogameService.get(id));
+        VideogameEntity videogame = videogameService.get(id);
+        if (videogame != null) {
+            model.addAttribute("videogameAttribute", videogame);
+        } else {
+            return "redirect:/404";
+        }
         return "videogameEditPage";
     }
 
     @RequestMapping(value = "/videogames/edit", method = RequestMethod.POST)
     public String postEditVideogame(@ModelAttribute("videogameAttribute") VideogameEntity videogame, @RequestParam(value="id") Integer id, ModelMap model) {
-        videogameService.edit(videogame, id);
+        try {
+            videogameService.edit(videogame, id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/videogames";
     }
 

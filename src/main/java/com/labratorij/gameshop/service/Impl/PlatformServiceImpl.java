@@ -40,7 +40,7 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     public PlatformEntity get(int id) {
-        return platformRepository.getOne(id);
+        return platformRepository.findOne(id);
     }
 
     public List<PlatformEntity> getAll() {

@@ -14,19 +14,19 @@
             <p class="text1">
             Select the table you want to work with:
             <select name="Навигация" onchange="top.location.href=this.options[this.selectedIndex].value;">
-                <option selected value="http://localhost:8080/clients">Clients</option>
-                <option value="http://localhost:8080/employees">Employees</option>
-                <option value="http://localhost:8080/orders">Orders</option>
-                <option value="http://localhost:8080/platforms">Platforms</option>
-                <option value="http://localhost:8080/videogames">Videogames</option>
-            </select> To return to the main page, click this <a href="http://localhost:8080/">link</a>.</p>
+                <option selected value="${pageContext.servletContext.contextPath}/clients">Clients</option>
+                <option value="${pageContext.servletContext.contextPath}/employees">Employees</option>
+                <option value="${pageContext.servletContext.contextPath}/orders">Orders</option>
+                <option value="${pageContext.servletContext.contextPath}/platforms">Platforms</option>
+                <option value="${pageContext.servletContext.contextPath}/videogames">Videogames</option>
+            </select> To return to the main page, click this <a href="/">link</a>.</p>
             <table class="table1">
             <tr>
                 <th>Name</th>
                 <th>E-mail</th>
                 <th>Telephone</th>
                 <th>Orders</th>
-                <th><a href="http://localhost:8080/clients/add" class="buttonAdd">Add new Entry</a></th>
+                <th><a href="${pageContext.servletContext.contextPath}/clients/add" class="buttonAdd">Add new Entry</a></th>
             </tr>
             <c:forEach items="${clients}" var="client" varStatus="status">
                 <tr valign="top">

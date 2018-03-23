@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public EmployeeEntity get(int id) {
-        return employeeRepository.getOne(id);
+        return employeeRepository.findOne(id);
     }
 
     public List<EmployeeEntity> getAll() {
