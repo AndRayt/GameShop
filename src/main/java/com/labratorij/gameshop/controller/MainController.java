@@ -135,31 +135,51 @@ public class MainController {
      */
     @RequestMapping(value = "/clients/delete", method = RequestMethod.GET)
     public String deleteClient(@RequestParam(value="id") Integer id, ModelMap model) {
-        clientService.delete(id);
+        try {
+            clientService.delete(id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/clients";
     }
 
     @RequestMapping(value = "/employees/delete", method = RequestMethod.GET)
     public String deleteEmployee(@RequestParam(value="id") Integer id, ModelMap model) {
-        employeeService.delete(id);
+        try {
+            employeeService.delete(id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/employees";
     }
 
     @RequestMapping(value = "/orders/delete", method = RequestMethod.GET)
     public String deleteOrder(@RequestParam(value="id") Integer id, ModelMap model) {
-        orderService.delete(id);
+        try {
+            orderService.delete(id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/orders";
     }
 
     @RequestMapping(value = "/platforms/delete", method = RequestMethod.GET)
     public String deletePlatform(@RequestParam(value="id") Integer id, ModelMap model) {
-        platformService.delete(id);
+        try {
+            platformService.delete(id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/platforms";
     }
 
     @RequestMapping(value = "/videogames/delete", method = RequestMethod.GET)
     public String deleteVideogame(@RequestParam(value="id") Integer id, ModelMap model) {
-        videogameService.delete(id);
+        try {
+            videogameService.delete(id);
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
         return "redirect:/videogames";
     }
     /**
